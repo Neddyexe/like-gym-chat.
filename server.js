@@ -1,10 +1,14 @@
 import express from "express";
 import OpenAI from "openai";
 import "dotenv/config";
+import path from "path";
 
 const app = express();
 app.use(express.json({limit:"200kb"}));
 app.use(express.static("public"));
+app.get("/", (req, res) => {
+  res.sendFile(path.join(process.cwd(), "public", "index.html"));
+});
 
 const openai = process.env.OPENAI_API_KEY ? new OpenAI({apiKey:process.env.OPENAI_API_KEY}) : null;
 
