@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0b0d" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Gym Chat" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="/icon-192.png" />
+  <link rel="stylesheet" href="/styles.css" />
+  <title>Gym Chat</title>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">21-DAY UNI COMEBACK</div>
+        <h1>Gym Chat</h1>
+      </div>
+      <button id="resetBtn" class="ghost small">Reset demo</button>
+    </header>
+
+    <section class="hero card">
+      <div>
+        <div id="dayLabel" class="eyebrow">DAY 1 / 21</div>
+        <h2 id="sessionTitle">Pull • Calisthenics + Hypertrophy</h2>
+        <p id="sessionSubtitle">Strength first. Muscle second. Conditioning last.</p>
+      </div>
+      <button id="startWorkoutBtn" class="primary">Start workout</button>
+    </section>
+
+    <nav class="tabs" aria-label="App sections">
+      <button class="tab active" data-tab="coach">Coach</button>
+      <button class="tab" data-tab="workout">Workout</button>
+      <button class="tab" data-tab="progress">Progress</button>
+      <button class="tab" data-tab="program">Program</button>
+    </nav>
+
+    <section id="coach" class="panel active">
+      <div id="chatLog" class="chat-log" aria-live="polite"></div>
+      <form id="chatForm" class="composer">
+        <button type="button" id="voiceBtn" class="voice" aria-label="Speak to coach">🎙️</button>
+        <input id="chatInput" autocomplete="off" placeholder="Tell me what you did…" />
+        <button class="send" type="submit">Send</button>
+      </form>
+      <p id="voiceStatus" class="muted tiny"></p>
+    </section>
+
+    <section id="workout" class="panel">
+      <div class="current card">
+        <div class="eyebrow">CURRENT EXERCISE</div>
+        <h3 id="exerciseName">Pull-ups</h3>
+        <div class="metric-row">
+          <div><span class="metric-label">Set</span><strong id="setCount">1 / 3</strong></div>
+          <div><span class="metric-label">Last</span><strong id="lastSet">—</strong></div>
+          <div><span class="metric-label">Rest</span><strong id="timerText">01:30</strong></div>
+        </div>
+        <div class="actions">
+          <button id="minusRep" class="ghost">− rep</button>
+          <button id="plusRep" class="ghost">+ rep</button>
+          <button id="logSet" class="primary">Log set</button>
+        </div>
+      </div>
+      <div id="exerciseList" class="exercise-list"></div>
+    </section>
+
+    <section id="progress" class="panel">
+      <div class="stats-grid">
+        <div class="card stat"><span>Pull-up PR</span><strong id="pullupPr">5</strong><small>reps</small></div>
+        <div class="card stat"><span>Dip PR</span><strong id="dipPr">1</strong><small>deep reps</small></div>
+        <div class="card stat"><span>Sessions</span><strong id="sessionCount">0</strong><small>logged</small></div>
+        <div class="card stat"><span>Streak</span><strong id="streak">0</strong><small>days</small></div>
+      </div>
+      <div class="card">
+        <div class="eyebrow">RECENT SETS</div>
+        <div id="historyList" class="history-list"></div>
+      </div>
+    </section>
+
+    <section id="program" class="panel">
+      <div id="programList" class="program-list"></div>
+    </section>
+
+    <footer>
+      <span>Local-first training log • optional OpenAI coach backend</span>
+    </footer>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
